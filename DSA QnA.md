@@ -1,10 +1,3 @@
-Here’s a **precise, PSU-interview–style guide** for **“Data Structures and Algorithms”**, crafted for **ISRO, BARC, DRDO, NIC, ONGC, GAIL, etc.** — focusing on short, technical, to-the-point answers ideal for oral or written interviews.
-
----
-
-## 🧠 **Top 10 Most Common DSA Questions (Short Answers)**
-
----
 
 ### **1. What is a Data Structure?**
 
@@ -133,4 +126,3 @@ Here’s a **precise, PSU-interview–style guide** for **“Data Structures and
 
 ---
 
-Would you like me to add **5 advanced PSU-level DSA questions** (like time complexity of sorting, tree traversals, graph cycle detection, or dynamic programming patterns)?
