@@ -86,37 +86,84 @@
 * **HTTPS:** Secured using SSL/TLS encryption.
 
 ---
+---
 
-## ⚙️ **Top 3 Scenario-Based Questions (Short Answers)**
-
-### **Scenario 1:**
-
-**Q:** Two systems on the same network can’t communicate, though both have IPs.
-**A:**
-
-* Check subnet mask mismatch.
-* Verify ARP table and gateway configuration.
-* Ensure no firewall or duplicate IP conflict.
+### 5 real-world, step-by-step Computer Network scenarios
 
 ---
 
-### **Scenario 2:**
+## ⚙️ **Scenario 1: “What happens when you type `google.com` and press Enter?”**
 
-**Q:** You can ping by IP but not by domain name.
-**A:**
+**Step-by-step answer (short and clear):**
 
-* DNS issue.
-* Check DNS server configuration or use alternate DNS.
+1. **DNS Resolution:** Browser checks cache → OS → DNS server to get IP of `google.com`.
+2. **TCP Connection:** Client initiates **TCP 3-way handshake** with the server (SYN → SYN-ACK → ACK).
+3. **TLS Handshake (if HTTPS):** Encryption keys are exchanged using SSL/TLS.
+4. **HTTP Request:** Browser sends an HTTP(S) GET request to the server.
+5. **Server Response:** Google’s server processes request and sends back HTML data.
+6. **Rendering:** Browser parses HTML, CSS, JS → renders page on screen.
+
+✅ **Concepts involved:** DNS, TCP/IP, HTTP, SSL/TLS, Browser rendering.
 
 ---
 
-### **Scenario 3:**
+## 🌍 **Scenario 2: “You send an email to someone — what happens in the background?”**
 
-**Q:** High latency and packet drops occur in data transfer.
-**A:**
+**Step-by-step:**
 
-* Possible congestion or faulty router/switch link.
-* Use `traceroute` or `ping` to locate delay.
-* Apply congestion control or QoS mechanisms.
+1. Email client connects to **SMTP** server of sender.
+2. SMTP sends mail to recipient’s **Mail Transfer Agent (MTA)** using DNS MX lookup.
+3. Recipient’s **POP3/IMAP** server stores it.
+4. Receiver’s client connects to fetch email via POP3/IMAP.
+
+✅ **Concepts:** SMTP, POP3, IMAP, DNS MX record.
+
+---
+
+## 🖧 **Scenario 3: “Two systems on a LAN communicate — explain how data travels.”**
+
+**Steps:**
+
+1. Source checks **ARP table** to find destination MAC.
+2. If not found, it broadcasts an **ARP Request**.
+3. Destination replies with its MAC → stored in ARP cache.
+4. Source encapsulates data → Ethernet frame → sent to switch.
+5. Switch forwards frame to destination port using MAC table.
+
+✅ **Concepts:** ARP, MAC address, Ethernet, Switch, Data Link layer.
+
+---
+
+## 🌐 **Scenario 4: “How does routing work when you access a remote website?”**
+
+**Steps:**
+
+1. Packet leaves your local network via **default gateway (router)**.
+2. Router checks **routing table** → forwards based on **destination IP**.
+3. Each router decrements **TTL (Time to Live)**.
+4. Finally reaches destination IP → packet delivered to server’s socket.
+
+✅ **Concepts:** IP routing, TTL, Router, Hop-by-hop forwarding.
+
+---
+
+## 📡 **Scenario 5: “A user complains: Internet is slow. How will you diagnose it?”**
+
+**Step-by-step troubleshooting:**
+
+1. Check **local connectivity** → ping gateway.
+2. Check **DNS resolution** (try pinging domain vs IP).
+3. Use **traceroute** to detect hop delays.
+4. Check **bandwidth usage** or packet loss.
+5. Inspect **router logs or interface errors**.
+
+✅ **Concepts:** Ping, DNS, Traceroute, Congestion, Network diagnostics.
+
+---
+
+Would you like me to add **a few more real-world PSU-style OS + CN integrated scenarios**, like
+👉 “When a process on one computer communicates with another using sockets — explain step-by-step”?
+These are highly favored in **BARC/ISRO viva**.
+
 
 ---
