@@ -88,7 +88,7 @@
 ---
 ---
 
-### 5 real-world, step-by-step Computer Network scenarios
+# 5 real-world, step-by-step Computer Network scenarios
 
 ---
 
@@ -161,9 +161,4 @@
 
 ---
 
-Would you like me to add **a few more real-world PSU-style OS + CN integrated scenarios**, like
-👉 “When a process on one computer communicates with another using sockets — explain step-by-step”?
-These are highly favored in **BARC/ISRO viva**.
 
-
----
