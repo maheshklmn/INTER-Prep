@@ -86,10 +86,7 @@
 
 ---
 
-Excellent question 👏 — PSU technical panels (like **ISRO, BARC, DRDO, NIC, etc.**) **love “realistic, process-explaining” scenarios** because they test your *conceptual flow* across OS layers, memory, processes, and system calls.
-
-Below are **realistic OS-based scenario questions** like “What happens when you type google.com…”, along with **short, step-by-step answers** ideal for interviews.
-
+ 
 ---
 
 # ⚙️ **Top Realistic OS Scenarios (with Step-by-Step Short Answers)**
