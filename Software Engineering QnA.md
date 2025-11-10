@@ -1,5 +1,4 @@
 
-
 ### **1. What is Software Engineering?**
 
 * The **systematic, disciplined, and quantifiable approach** to software development, operation, and maintenance.
