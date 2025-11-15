@@ -52,10 +52,3 @@
         3.  **Bastion Host:** Use a Bastion (Jump Box) in the public subnet for any secure admin access to the database.
     * **Answer:** Use an **Auto Scaling Group** with a **Dynamic Scaling policy** (e.g., "target tracking" for CPU usage) to automatically add instances as traffic increases and remove them as it subsides. You could also use **Scheduled Scaling** to pre-warm the fleet just before the sale. Use **CloudFront (CDN)** to cache static assets (images, CSS) to reduce load on the servers.
 
-## 3.  **Securing a VPC:** You have just created a new VPC for a project. It has a public subnet for your web servers and a private subnet for your database. What are the key steps you would take to secure this network?
-    * **Answer:**
-        1.  **Public Subnet:** Attach an **Internet Gateway (IGW)**. Place web servers here. Use a **Security Group** that only allows HTTP/HTTPS (ports 80/443) from the internet (`0.0.0.0/0`).
-        2.  **Private Subnet:** Do *not* attach an IGW. Place the database here. Use a **Security Group** that only allows database traffic (e.g., MySQL port 3306) *only* from the Security Group of your web servers.
-        3.  **NACLs:** Use the default NACLs or create stricter rules (e.g., blocking known malicious IPs) at the subnet level.
-        4.  **Bastion Host:** To access the database for maintenance, use a **Bastion Host (Jump Box)** in the public subnet and SSH into that first, then connect to the private database.
-        5.  
