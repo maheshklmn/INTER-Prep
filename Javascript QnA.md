@@ -69,6 +69,55 @@
 
 * The Loop constantly checks: Is the Call Stack empty? If yes, it *first* runs all tasks from the Microtask Queue. Then, if *both* are empty, it runs *one* task from the Callback Queue.
 
+**Visual Representation:**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        JavaScript Engine                         │
+│                                                                  │
+│  ┌──────────────┐         ┌─────────────────────────────────┐  │
+│  │  Call Stack  │         │         Heap (Memory)           │  │
+│  │              │         │                                 │  │
+│  │  Function 1  │         │   Objects, Variables, etc.      │  │
+│  │  Function 2  │         │                                 │  │
+│  │  Function 3  │         └─────────────────────────────────┘  │
+│  └──────────────┘                                               │
+└─────────────────────────────────────────────────────────────────┘
+         ▲                                    │
+         │                                    │
+         │                                    ▼
+    ┌────┴─────┐                    ┌─────────────────┐
+    │  Event   │                    │   Web APIs      │
+    │  Loop    │                    │                 │
+    └────┬─────┘                    │  - setTimeout   │
+         ▲                          │  - fetch        │
+         │                          │  - DOM events   │
+         │                          └────────┬────────┘
+         │                                   │
+    ┌────┴────────────────────────┐         │
+    │      Task Queues             │◄────────┘
+    │                              │
+    │  ┌────────────────────────┐ │
+    │  │  Microtask Queue       │ │  (Higher Priority)
+    │  │  - Promises            │ │
+    │  │  - process.nextTick    │ │
+    │  └────────────────────────┘ │
+    │                              │
+    │  ┌────────────────────────┐ │
+    │  │  Callback Queue        │ │  (Lower Priority)
+    │  │  - setTimeout callbacks│ │
+    │  │  - setInterval         │ │
+    │  └────────────────────────┘ │
+    └──────────────────────────────┘
+```
+
+**How it works:**
+1. Code executes on the **Call Stack**
+2. Async operations are handed to **Web APIs**
+3. When complete, callbacks go to appropriate **queues**
+4. **Event Loop** moves tasks from queues to Call Stack when empty
+5. **Microtask Queue** is processed before **Callback Queue**
+
 
 ---
 
