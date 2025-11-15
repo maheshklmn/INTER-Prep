@@ -61,10 +61,10 @@
 
 * The Event Loop is JavaScript's core mechanism for handling asynchronous operations like fetch or setTimeout in its single-threaded environment, preventing blocking.
 * It involves these key parts:
-- Call Stack: For synchronous code.
-- Web APIs: Offloads async tasks.
-- Microtask Queue: High-priority, for Promises.
-- Callback Queue: Low-priority, for timers.
+  Call Stack: For synchronous code.
+  Web APIs: Offloads async tasks.
+  Microtask Queue: High-priority, for Promises.
+  Callback Queue: Low-priority, for timers.
 * The Loop constantly checks: Is the Call Stack empty? If yes, it first runs all tasks from the Microtask Queue. Then, if both are empty, it runs one task from the Callback Queue.
 
 ---
