@@ -59,13 +59,16 @@
 
 ### **7. What is an event loop in JavaScript?**
 
-* The Event Loop is JavaScript's core mechanism for handling asynchronous operations like fetch or setTimeout in its single-threaded environment, preventing blocking.
+* The Event Loop is JavaScript's core mechanism for handling asynchronous operations like `fetch` or `setTimeout` in its single-threaded environment, preventing blocking.
+
 * It involves these key parts:
-  Call Stack: For synchronous code.
-  Web APIs: Offloads async tasks.
-  Microtask Queue: High-priority, for Promises.
-  Callback Queue: Low-priority, for timers.
-* The Loop constantly checks: Is the Call Stack empty? If yes, it first runs all tasks from the Microtask Queue. Then, if both are empty, it runs one task from the Callback Queue.
+1.  **Call Stack:** For synchronous code.
+2.  **Web APIs:** Offloads async tasks.
+3.  **Microtask Queue:** High-priority, for Promises.
+4.  **Callback Queue:** Low-priority, for timers.
+
+* The Loop constantly checks: Is the Call Stack empty? If yes, it *first* runs all tasks from the Microtask Queue. Then, if *both* are empty, it runs *one* task from the Callback Queue.
+
 
 ---
 
