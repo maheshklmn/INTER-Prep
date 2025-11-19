@@ -345,12 +345,13 @@ Both properties hide elements, but they behave differently.
   .b { visibility: hidden; }   /* Invisible but takes space */
 </style>
 
+---
+
 # ✅ Tips & Quick Cheatsheet
 
 * Add `* { box-sizing: border-box; }` globally.
 * Use Flexbox for 1D layouts, Grid for 2D.
 * Prefer semantic HTML for accessibility/SEO.
-* Use `rem` for font sizing and `min()`/`max()`/`clamp()` for responsive sizing.
+* Use `rem` for font sizing and `min()` / `max()` / `clamp()` for responsive sizing.
 * Always include viewport meta and test on multiple screen sizes.
 
----
