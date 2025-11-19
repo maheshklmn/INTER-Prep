@@ -328,4 +328,30 @@ input { padding:8px; font-size:1rem; }
 * Always include viewport meta and test on multiple screen sizes.
 
 ---
-```
+
+### **11. Explain the difference between `display: none` and `visibility: hidden` with an example.**
+
+Both properties hide elements, but they behave differently.
+
+#### **Difference Table**
+
+| Property             | Element Visible? | Space Reserved? |
+|----------------------|------------------|------------------|
+| `display: none`      | ❌ No            | ❌ No            |
+| `visibility: hidden` | ❌ No            | ✅ Yes           |
+
+---
+
+### **Example**
+
+```html
+<p class="a">Paragraph A</p>
+<p class="b">Paragraph B</p>
+
+<style>
+  .a { display: none; }        /* Element removed from layout */
+  .b { visibility: hidden; }   /* Invisible but takes space */
+</style>
+
+---
+---
