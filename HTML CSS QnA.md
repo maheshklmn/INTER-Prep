@@ -345,5 +345,5 @@ Both properties hide elements, but they behave differently.
   .b { visibility: hidden; }   /* Invisible but takes space */
 </style>
 
----
+
 
