@@ -30,6 +30,8 @@
 | Verification | “Are we building it right?”        | Code review, design check        |
 | Validation   | “Are we building the right thing?” | User testing, acceptance testing |
 
+- Authentication is verifying a user's identity, while authorization determines what authenticated users are allowed to do and access. 
+
 ---
 
 ### **5. What are Functional and Non-functional requirements?**
