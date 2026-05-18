@@ -1,0 +1,98 @@
+# Digital Logic & Computer Organization QnA
+
+### **1. What is Boolean Algebra?**
+* A branch of math dealing with binary variables: **1 (True)** or **0 (False)**[cite: 1].
+* Used to simplify digital circuits[cite: 1].
+* **Key Laws:**
+  * Idempotent: $A + A = A$[cite: 1]
+  * Complement: $A + A' = 1$ and $A \cdot A' = 0$[cite: 1]
+  * De Morgan's: $(A + B)' = A' \cdot B'$ and $(A \cdot B)' = A' + B'$[cite: 1]
+
+---
+
+### **2. What is a K-Map?**
+* A graphical grid used to simplify Boolean expressions easily[cite: 1].
+* Uses **Gray Code** (only 1 bit changes between adjacent cells)[cite: 1].
+* Rules: Group `1`s in powers of 2 (2, 4, 8) to eliminate variables[cite: 1].
+
+---
+
+### **3. What are the types of Logic Gates?**
+* **Basic:** AND (both inputs 1), OR (any input 1), NOT (inverts input)[cite: 1].
+* **Universal:** NAND and NOR (can build *any* other gate using only these)[cite: 1].
+* **Special:** XOR (1 if inputs differ), XNOR (1 if inputs are identical)[cite: 1].
+
+---
+
+### **4. Combinational vs. Sequential Circuits**
+
+| Feature | Combinational Circuits | Sequential Circuits |
+| :--- | :--- | :--- |
+| **Memory** | No memory[cite: 1]. | Has memory[cite: 1]. |
+| **Output** | Depends *only* on current inputs[cite: 1]. | Depends on current inputs + past states[cite: 1]. |
+| **Clock** | No clock needed[cite: 1]. | Uses a clock for synchronization[cite: 1]. |
+| **Examples** | Adders, Mux, Demux[cite: 1]. | Flip-Flops, Counters[cite: 1]. |
+
+---
+
+### **5. What are Multiplexers (Mux) and Demultiplexers (Demux)?**
+* **Mux (Many-to-One):** Selects one of many inputs and routes it to a single output line[cite: 1].
+* **Demux (One-to-Many):** Takes one input and routes it to one of many output lines[cite: 1].
+* Both use **select lines** to choose the path[cite: 1].
+
+---
+
+### **6. Half Adder vs. Full Adder**
+* **Half Adder:** Adds 2 bits. Outputs: **Sum** ($A \oplus B$) and **Carry** ($A \cdot B$)[cite: 1]. Cannot accept a previous carry bit[cite: 1].
+* **Full Adder:** Adds 3 bits (two inputs + one Carry-in)[cite: 1]. Outputs: **Sum** and **Carry-out**[cite: 1].
+
+---
+
+### **7. What is a Flip-Flop? Name the types.**
+* A 1-bit memory cell that updates on a clock edge[cite: 1].
+* **Types & Issues:**
+  * **SR:** Set-Reset. $S=1, R=1$ is invalid[cite: 1].
+  * **JK:** Fixes SR. $J=1, K=1$ causes a **Race-Around Condition** (rapid toggling)[cite: 1].
+  * **D (Data):** Stores the input value directly[cite: 1].
+  * **T (Toggle):** Flips the state every time input is 1[cite: 1].
+
+---
+
+### **8. Asynchronous vs. Synchronous Counters**
+* **Asynchronous (Ripple):** Clock hits the first flip-flop; its output clocks the next[cite: 1]. Causes propagation delays[cite: 1].
+* **Synchronous:** All flip-flops share the exact same clock and change state at the same time (faster)[cite: 1].
+
+---
+
+### **9. What are the Cache Mapping techniques?**
+1. **Direct Mapping:** Each memory block goes to exactly one specific cache line[cite: 1]. (High conflict)[cite: 1].
+2. **Fully Associative:** A memory block can go into *any* empty cache line[cite: 1]. (Flexible but expensive)[cite: 1].
+3. **Set-Associative:** Cache is divided into sets; a block goes to a specific set, but any line inside it[cite: 1].
+
+---
+
+### **10. Von Neumann vs. Harvard Architecture**
+* **Von Neumann:** Shared memory and bus for both data and instructions[cite: 1]. Causes a speed bottleneck[cite: 1].
+* **Harvard:** Separate memory and separate buses for data and instructions[cite: 1]. Allows faster parallel access[cite: 1].
+
+---
+
+## ⚙️ **Scenario-Based Questions**
+
+---
+
+### **Scenario 1:**
+**Q:** A JK Flip-Flop is toggling uncontrollably between 0 and 1 during a single clock pulse when $J=1, K=1$. What is the fix?[cite: 1]  
+**A:** This is the **Race-Around Condition**[cite: 1]. Fix it by changing from level-triggered to **Edge-Triggered** or using a **Master-Slave JK configuration**[cite: 1].
+
+---
+
+### **Scenario 2:**
+**Q:** Two specific blocks of memory keep kicking each other out of the cache, slowing down the CPU. What is wrong?[cite: 1]  
+**A:** This is **Cache Thrashing** caused by **Direct Mapping**[cite: 1]. Fix it by upgrading to a **Set-Associative** cache mapping[cite: 1].
+
+---
+
+### **Scenario 3:**
+**Q:** You need a circuit that takes a 3-bit code from a TV remote to route a single input video signal to one of 8 screens. What do you use?[cite: 1]  
+**A:** Use a **1-to-8 Demultiplexer (Demux)**[cite: 1]. The video is the input, and the 3-bit code controls which screen gets the signal[cite: 1].
