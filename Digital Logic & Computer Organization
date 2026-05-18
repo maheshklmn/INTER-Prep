@@ -1,97 +1,484 @@
+# Digital Logic & Computer Organization (DLCO) – Questions & Answers
 
-### **1. What is Boolean Algebra?**
-* A branch of math dealing with binary variables: **1 (True)** or **0 (False)**[cite: 1].
-* Used to simplify digital circuits[cite: 1].
-* **Key Laws:**
-  * Idempotent: $A + A = A$[cite: 1]
-  * Complement: $A + A' = 1$ and $A \cdot A' = 0$[cite: 1]
-  * De Morgan's: $(A + B)' = A' \cdot B'$ and $(A \cdot B)' = A' + B'$[cite: 1]
+## 1. What is Boolean Algebra?
 
----
+Boolean Algebra is a branch of mathematics that deals with binary values:
 
-### **2. What is a K-Map?**
-* A graphical grid used to simplify Boolean expressions easily[cite: 1].
-* Uses **Gray Code** (only 1 bit changes between adjacent cells)[cite: 1].
-* Rules: Group `1`s in powers of 2 (2, 4, 8) to eliminate variables[cite: 1].
+- `1` → True
+- `0` → False
 
----
+It is mainly used to simplify digital circuits.
 
-### **3. What are the types of Logic Gates?**
-* **Basic:** AND (both inputs 1), OR (any input 1), NOT (inverts input)[cite: 1].
-* **Universal:** NAND and NOR (can build *any* other gate using only these)[cite: 1].
-* **Special:** XOR (1 if inputs differ), XNOR (1 if inputs are identical)[cite: 1].
+### Key Laws of Boolean Algebra
 
----
+#### Idempotent Law
+```math
+A + A = A
+```
 
-### **4. Combinational vs. Sequential Circuits**
+```math
+A \cdot A = A
+```
 
-| Feature | Combinational Circuits | Sequential Circuits |
-| :--- | :--- | :--- |
-| **Memory** | No memory[cite: 1]. | Has memory[cite: 1]. |
-| **Output** | Depends *only* on current inputs[cite: 1]. | Depends on current inputs + past states[cite: 1]. |
-| **Clock** | No clock needed[cite: 1]. | Uses a clock for synchronization[cite: 1]. |
-| **Examples** | Adders, Mux, Demux[cite: 1]. | Flip-Flops, Counters[cite: 1]. |
+#### Complement Law
+```math
+A + A' = 1
+```
 
----
+```math
+A \cdot A' = 0
+```
 
-### **5. What are Multiplexers (Mux) and Demultiplexers (Demux)?**
-* **Mux (Many-to-One):** Selects one of many inputs and routes it to a single output line[cite: 1].
-* **Demux (One-to-Many):** Takes one input and routes it to one of many output lines[cite: 1].
-* Both use **select lines** to choose the path[cite: 1].
+#### De Morgan's Theorem
+```math
+(A + B)' = A' \cdot B'
+```
 
----
-
-### **6. Half Adder vs. Full Adder**
-* **Half Adder:** Adds 2 bits. Outputs: **Sum** ($A \oplus B$) and **Carry** ($A \cdot B$)[cite: 1]. Cannot accept a previous carry bit[cite: 1].
-* **Full Adder:** Adds 3 bits (two inputs + one Carry-in)[cite: 1]. Outputs: **Sum** and **Carry-out**[cite: 1].
+```math
+(A \cdot B)' = A' + B'
+```
 
 ---
 
-### **7. What is a Flip-Flop? Name the types.**
-* A 1-bit memory cell that updates on a clock edge[cite: 1].
-* **Types & Issues:**
-  * **SR:** Set-Reset. $S=1, R=1$ is invalid[cite: 1].
-  * **JK:** Fixes SR. $J=1, K=1$ causes a **Race-Around Condition** (rapid toggling)[cite: 1].
-  * **D (Data):** Stores the input value directly[cite: 1].
-  * **T (Toggle):** Flips the state every time input is 1[cite: 1].
+## 2. What is a K-Map?
+
+A **Karnaugh Map (K-Map)** is a graphical method used to simplify Boolean expressions.
+
+### Features
+- Uses **Gray Code**
+- Adjacent cells differ by only one bit
+- Groups are formed in powers of:
+
+- 2
+- 4
+- 8
+- 16
+
+### Rules
+1. Group only `1`s
+2. Groups must be powers of 2
+3. Larger groups provide more simplification
+4. Remove changing variables
 
 ---
 
-### **8. Asynchronous vs. Synchronous Counters**
-* **Asynchronous (Ripple):** Clock hits the first flip-flop; its output clocks the next[cite: 1]. Causes propagation delays[cite: 1].
-* **Synchronous:** All flip-flops share the exact same clock and change state at the same time (faster)[cite: 1].
+## 3. Types of Logic Gates
+
+### Basic Gates
+
+### AND Gate
+Output becomes `1` only when all inputs are `1`.
+
+| A | B | Output |
+|---|---|---|
+|0|0|0|
+|0|1|0|
+|1|0|0|
+|1|1|1|
+
+### OR Gate
+Output becomes `1` if any input is `1`.
+
+### NOT Gate
+Inverts the input.
+
+```math
+Y = A'
+```
 
 ---
 
-### **9. What are the Cache Mapping techniques?**
-1. **Direct Mapping:** Each memory block goes to exactly one specific cache line[cite: 1]. (High conflict)[cite: 1].
-2. **Fully Associative:** A memory block can go into *any* empty cache line[cite: 1]. (Flexible but expensive)[cite: 1].
-3. **Set-Associative:** Cache is divided into sets; a block goes to a specific set, but any line inside it[cite: 1].
+### Universal Gates
+
+#### NAND Gate
+Can create all other logic gates.
+
+```math
+Y = (A \cdot B)'
+```
+
+#### NOR Gate
+Also used to implement any logic circuit.
+
+```math
+Y = (A + B)'
+```
 
 ---
 
-### **10. Von Neumann vs. Harvard Architecture**
-* **Von Neumann:** Shared memory and bus for both data and instructions[cite: 1]. Causes a speed bottleneck[cite: 1].
-* **Harvard:** Separate memory and separate buses for data and instructions[cite: 1]. Allows faster parallel access[cite: 1].
+### Special Gates
+
+#### XOR Gate
+Output is `1` when inputs differ.
+
+```math
+Y = A \oplus B
+```
+
+#### XNOR Gate
+Output is `1` when inputs are same.
 
 ---
 
-## ⚙️ **Scenario-Based Questions**
+## 4. Combinational vs Sequential Circuits
+
+| Feature | Combinational Circuit | Sequential Circuit |
+|----------|----------------------|-------------------|
+| Memory | No memory | Has memory |
+| Output | Depends only on input | Depends on present + previous state |
+| Clock | Not required | Required |
+| Examples | Adders, MUX, DEMUX | Flip-Flops, Counters |
 
 ---
 
-### **Scenario 1:**
-**Q:** A JK Flip-Flop is toggling uncontrollably between 0 and 1 during a single clock pulse when $J=1, K=1$. What is the fix?[cite: 1]  
-**A:** This is the **Race-Around Condition**[cite: 1]. Fix it by changing from level-triggered to **Edge-Triggered** or using a **Master-Slave JK configuration**[cite: 1].
+## 5. Multiplexer (MUX) and Demultiplexer (DEMUX)
+
+### Multiplexer (MUX)
+
+MUX means **Many-to-One**.
+
+It selects one input from many inputs and sends it to one output.
+
+Example:
+
+```text
+4 Inputs → 1 Output
+```
+
+Uses **Select Lines** to choose input.
 
 ---
 
-### **Scenario 2:**
-**Q:** Two specific blocks of memory keep kicking each other out of the cache, slowing down the CPU. What is wrong?[cite: 1]  
-**A:** This is **Cache Thrashing** caused by **Direct Mapping**[cite: 1]. Fix it by upgrading to a **Set-Associative** cache mapping[cite: 1].
+### Demultiplexer (DEMUX)
+
+DEMUX means **One-to-Many**.
+
+It takes one input and sends it to one output line among many outputs.
+
+Example:
+
+```text
+1 Input → 8 Outputs
+```
+
+Also uses select lines.
 
 ---
 
-### **Scenario 3:**
-**Q:** You need a circuit that takes a 3-bit code from a TV remote to route a single input video signal to one of 8 screens. What do you use?[cite: 1]  
-**A:** Use a **1-to-8 Demultiplexer (Demux)**[cite: 1]. The video is the input, and the 3-bit code controls which screen gets the signal[cite: 1].
+## 6. Half Adder vs Full Adder
+
+### Half Adder
+
+Adds only two bits.
+
+Inputs:
+
+- A
+- B
+
+Outputs:
+
+### Sum
+
+```math
+S = A \oplus B
+```
+
+### Carry
+
+```math
+C = A \cdot B
+```
+
+Limitation:
+
+- Cannot accept carry input.
+
+---
+
+### Full Adder
+
+Adds three bits:
+
+- A
+- B
+- Carry In (`Cin`)
+
+Outputs:
+
+### Sum
+
+```math
+S = A \oplus B \oplus Cin
+```
+
+### Carry Out
+
+```math
+Cout = AB + BCin + ACin
+```
+
+---
+
+## 7. What is a Flip-Flop? Types of Flip-Flops
+
+A Flip-Flop is a **1-bit memory device**.
+
+It stores binary data and changes state using clock signals.
+
+### Types
+
+### SR Flip-Flop
+
+S = Set
+
+R = Reset
+
+Invalid condition:
+
+```text
+S = 1
+R = 1
+```
+
+---
+
+### JK Flip-Flop
+
+Improved version of SR Flip-Flop.
+
+Condition:
+
+```text
+J = 1
+K = 1
+```
+
+Result:
+
+- Toggles continuously
+- Causes Race Around Condition
+
+---
+
+### D Flip-Flop
+
+Stores data directly.
+
+```math
+Q(next) = D
+```
+
+---
+
+### T Flip-Flop
+
+Used for toggling.
+
+When:
+
+```text
+T = 1
+```
+
+Output changes state.
+
+---
+
+## 8. Asynchronous vs Synchronous Counters
+
+| Feature | Asynchronous Counter | Synchronous Counter |
+|----------|---------------------|--------------------|
+| Clock Input | Applied only to first FF | Applied to all FFs |
+| Speed | Slower | Faster |
+| Delay | More propagation delay | Less delay |
+| Example | Ripple Counter | Parallel Counter |
+
+### Asynchronous Counter
+- Output of one flip-flop becomes clock for next flip-flop
+- Delay accumulates
+
+### Synchronous Counter
+- Same clock for all flip-flops
+- State changes simultaneously
+
+---
+
+## 9. Cache Mapping Techniques
+
+### 1. Direct Mapping
+
+Each memory block maps to exactly one cache location.
+
+Advantages:
+- Simple
+- Fast implementation
+
+Disadvantage:
+- High conflict misses
+- Cache thrashing
+
+---
+
+### 2. Fully Associative Mapping
+
+Memory block can go anywhere in cache.
+
+Advantages:
+- Flexible
+- Less conflict
+
+Disadvantages:
+- Expensive
+- Complex hardware
+
+---
+
+### 3. Set Associative Mapping
+
+Cache divided into sets.
+
+Memory block goes to:
+
+```text
+Specific Set → Any Line Inside Set
+```
+
+Advantages:
+- Balanced performance
+- Reduced conflicts
+
+---
+
+## 10. Von Neumann vs Harvard Architecture
+
+| Feature | Von Neumann | Harvard |
+|----------|-------------|----------|
+| Memory | Shared | Separate |
+| Bus | Single bus | Separate buses |
+| Speed | Slower | Faster |
+| Issue | Bottleneck | Parallel access |
+
+### Von Neumann Architecture
+
+- Same memory for instructions and data
+- Causes:
+
+```text
+Von Neumann Bottleneck
+```
+
+---
+
+### Harvard Architecture
+
+- Separate instruction memory
+- Separate data memory
+- Allows parallel processing
+
+---
+
+# Scenario-Based Questions
+
+---
+
+## Scenario 1
+
+### Question
+
+A JK Flip-Flop is toggling continuously between `0` and `1` during one clock pulse when:
+
+```text
+J = 1
+K = 1
+```
+
+What is the solution?
+
+### Answer
+
+This is called:
+
+**Race Around Condition**
+
+Fixes:
+
+1. Use Edge Triggering
+2. Use Master-Slave JK Flip-Flop
+3. Reduce clock pulse width
+
+---
+
+## Scenario 2
+
+### Question
+
+Two memory blocks repeatedly replace each other inside cache and CPU performance becomes slow.
+
+What happened?
+
+### Answer
+
+This is:
+
+**Cache Thrashing**
+
+Cause:
+
+- Direct Mapping conflict
+
+Solution:
+
+Use:
+
+- Set Associative Mapping
+
+---
+
+## Scenario 3
+
+### Question
+
+A TV remote sends a 3-bit signal and one video input must be routed to one of eight screens.
+
+Which circuit is needed?
+
+### Answer
+
+Use:
+
+```text
+1-to-8 Demultiplexer (DEMUX)
+```
+
+Working:
+
+- Video signal → Input
+- 3-bit code → Select lines
+- Output → Selected screen
+
+---
+
+# Quick Revision Table
+
+| Topic | Key Point |
+|--------|-----------|
+| Boolean Algebra | Binary mathematics |
+| K-Map | Simplifies expressions |
+| Logic Gates | Basic building blocks |
+| MUX | Many inputs → One output |
+| DEMUX | One input → Many outputs |
+| Half Adder | Adds 2 bits |
+| Full Adder | Adds 3 bits |
+| Flip-Flop | Memory element |
+| Counter | Sequential circuit |
+| Cache Mapping | Memory optimization |
+| Von Neumann | Shared memory |
+| Harvard | Separate memory |
+
+---
+
+## End of Notes
+**Subject:** Digital Logic & Computer Organization (DLCO)
+
+Prepared for quick revision and GitHub documentation.
