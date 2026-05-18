@@ -1,5 +1,3 @@
-# Digital Logic & Computer Organization (DLCO) – Questions & Answers
-
 ## 1. What is Boolean Algebra?
 
 Boolean Algebra is a branch of mathematics that deals with binary values:
